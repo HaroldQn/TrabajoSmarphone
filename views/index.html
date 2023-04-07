@@ -181,7 +181,7 @@
               operacion         : 'registrar',
               marca             : $("#marca").val(),
               modelo            : $("#modelo").val(),
-              sistema_operativo : $("#sistema_operativo"),
+              sistema_operativo : $("#sistema_operativo").val(),
               tipo_pantalla     : $("#tipo_pantalla").val(),
               bateria           : $("#bateria").val(),
               camara            : $("#camara").val(),
@@ -189,7 +189,7 @@
             },
             success:function(result){
               if (result == ""){
-                $("formulario-smartphone")[0].reset();
+                $("#formulario-smartphone")[0].reset();
                 mostrarSmartphone();
                 $("#modal-registro-smartphone").modal('hide');
               }
@@ -197,21 +197,23 @@
           });
         }
       }
+
+      //-----------------------------------------------------
       function eliminarSmartphone(){
-        console.log("Eliminando")
+        console.log("Eliminando...");
       }
 
       $("#guardar-smartphone").click(registrarSmartphone);
 
       $("#tabla-smartphone tbody").on("click",".eliminar",function(){
-        const idsmartphoneEliminar = $(this).data("idsmartphone");
+        const idsmartphoneEliminar = $(this).data("idcelular");
         if(confirm("¿Estas seguro de proceder?")){
           $.ajax({
             url:'../controllers/smartphone.controller.php',
             type:'POST',
             data:{
               operacion : 'eliminar',
-              idsmarphone : idsmartphoneEliminar
+              idcelular : idsmartphoneEliminar
             },
             success: function(result){
               if(result == ""){
