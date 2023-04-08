@@ -60,7 +60,7 @@
           </table>
       </div>
       <div class="card-footer text-end">
-        <button class="btn btn-primary btn-sm">Actualizar Datos</button>
+        <button class="btn btn-primary btn-sm" id="actualizar">Actualizar Datos</button>
       </div>
     </div>
   </div> <!--FIN DE CONTAINER-->
@@ -79,7 +79,7 @@
         </div>
         <div class="modal-body">
           <!--ACA ESTA EL ID DEL FORMULARIO-->
-          <form action="" id="formulario-smartphone">
+          <form id="formulario-smartphone">
             <!--01-->
             <div class="mb-3">
               <label for="marca" class="form-label">Marca</label>
@@ -140,11 +140,7 @@
   </div>
   
   
-  <!-- Optional: Place to the bottom of scripts -->
-  <script>
-    const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-  
-  </script>
+
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -198,29 +194,26 @@
         }
       }
 
-      //-----------------------------------------------------
-      function eliminarSmartphone(){
-        console.log("Eliminando...");
-      }
+      
 
       $("#guardar-smartphone").click(registrarSmartphone);
 
       $("#tabla-smartphone tbody").on("click",".eliminar",function(){
-        const idsmartphoneEliminar = $(this).data("idcelular");
+        const idcelularEliminar = $(this).data("idcelular");
         if(confirm("¿Estas seguro de proceder?")){
           $.ajax({
             url:'../controllers/smartphone.controller.php',
             type:'POST',
             data:{
               operacion : 'eliminar',
-              idcelular : idsmartphoneEliminar
+              idcelular : idcelularEliminar
             },
             success: function(result){
               if(result == ""){
                 mostrarSmartphone();
               }
             }
-          })
+          });
         }
       });
 

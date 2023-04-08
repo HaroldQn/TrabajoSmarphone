@@ -21,8 +21,8 @@ if(isset($_POST['operacion'])){
                     <td>{$smartphone['camara']}</td>
                     <td>{$smartphone['precio']}</td>
                     <td>
-                    <a href='#' data-idsmartphone'{$smartphone['idcelular']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash-fill'></i></a>
-                    <a href='#' data-idsmartphone'{$smartphone['idcelular']}' class='btn btn-info btn-sm editar'><i class='bi bi-pencil'></i></a>
+                    <a href='#' data-idcelular'{$smartphone['idcelular']}' class='btn btn-danger btn-sm eliminar'><i class='bi bi-trash-fill'></i></a>
+                                <a href='#' data-idcelular'{$smartphone['idcelular']}' class='btn btn-info btn-sm editar'><i class='bi bi-pencil'></i></a>
                     </td>
                 </tr>
                 ";
@@ -42,6 +42,7 @@ if(isset($_POST['operacion'])){
         ];
         $smartphone->registrarSmartphone($datosForm);
     }
+
     if($_POST['operacion'] == 'eliminar'){
         $smartphone->eliminarSmartphone($_POST['idcelular']);
     }
